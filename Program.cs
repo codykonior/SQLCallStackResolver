@@ -34,18 +34,53 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
 {
     using System;
     using System.Windows.Forms;
+    using CommandLine;
 
     static class Program
     {
+
+        public class Options
+        {
+            [Option('c', "CallStackFile", Required = true, HelpText = "File containing the call stack to resolve")]
+            public string CallStackFile { get; set; }
+            [Option('p', "PDB", Required = true, HelpText = "Path to PDB files")]
+            public string PDB { get; set; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (args.Length == 0)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainForm());
+            }
+            else
+            {
+                StackResolver _resolver = new StackResolver();
+                Parser.Default.ParseArguments<Options>(args)
+                                  .WithParsed<Options>(o =>
+                                  {
+                                      string callStack = System.IO.File.ReadAllText(o.CallStackFile, System.Text.Encoding.Unicode);
+
+                                      string text = _resolver.ResolveCallstacks(
+                                        callStack,
+                                        o.PDB,      // pdbPaths.Text,
+                                        false,      // pdbRecurse.Checked,
+                                        null,       // dllPaths,
+                                        false,      // DLLrecurse.Checked,
+                                        false,      // FramesOnSingleLine.Checked,
+                                        false,      // IncludeLineNumbers.Checked,
+                                        false       // RelookupSource.Checked
+                                        );
+
+                                      System.Console.Write(text);
+                                  });
+            }
         }
     }
 }
