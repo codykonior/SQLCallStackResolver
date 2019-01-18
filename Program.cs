@@ -39,12 +39,37 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
     static class Program
     {
 
-        public class Options
+        [Verb("Parse", HelpText = "Parse call stack")]
+        public class ParseOptions
         {
-            [Option('c', "CallStackFile", Required = true, HelpText = "File containing the call stack to resolve")]
-            public string CallStackFile { get; set; }
-            [Option('p', "PDB", Required = true, HelpText = "Path to PDB files")]
-            public string PDB { get; set; }
+            [Option("CallStack", Required = false, HelpText = "Call stack to resolve")]
+            public string CallStack { get; set; }
+            [Option("SingleLine", Required = false, HelpText = "Frames on single line separated by a space")]
+            public bool SingleLine { get; set; }
+
+            [Option("PdbPath", Required = false, HelpText = "Path to PDB files separated by a semicolon")]
+            public string PdbPath { get; set; }
+            [Option("PdbRecurse", Required = false, HelpText = "Recurse PDB files")]
+            public bool PdbRecurse { get; set; }
+
+            [Option("DllPath", Required = false, HelpText = "Path to DLL files separated by a semicolon")]
+            public string DllPath { get; set; }
+            [Option("DllRecurse", Required = false, HelpText = "Recurse DLL files")]
+            public bool DllRecurse { get; set; }
+
+            [Option("IncludeLineNumbers", Required = false, HelpText = "Include line numbers")]
+            public bool IncludeLineNumbers { get; set; }
+            [Option("RelookupSource", Required = false, HelpText = "Relookup source")]
+            public bool LookupSource { get; set; }
+        }
+
+        [Verb("Script", HelpText = "Script PDB download")]
+        public class ScriptOptions
+        {
+            [Option("DllPath", Required = false, HelpText = "Path to DLL files")]
+            public string DllPath { get; set; }
+            [Option("DllRecurse", Required = false, HelpText = "Recurse DLL files")]
+            public bool DllRecurse { get; set; }
         }
 
         /// <summary>
@@ -62,24 +87,33 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             else
             {
                 StackResolver _resolver = new StackResolver();
-                Parser.Default.ParseArguments<Options>(args)
-                                  .WithParsed<Options>(o =>
-                                  {
-                                      string callStack = System.IO.File.ReadAllText(o.CallStackFile, System.Text.Encoding.Unicode);
 
-                                      string text = _resolver.ResolveCallstacks(
-                                        callStack,
-                                        o.PDB,      // pdbPaths.Text,
-                                        false,      // pdbRecurse.Checked,
-                                        null,       // dllPaths,
-                                        false,      // DLLrecurse.Checked,
-                                        false,      // FramesOnSingleLine.Checked,
-                                        false,      // IncludeLineNumbers.Checked,
-                                        false       // RelookupSource.Checked
-                                        );
+                CommandLine.Parser.Default.ParseArguments<ParseOptions, ScriptOptions>(args)
+                    .MapResult(
+                       (ParseOptions o) =>
+                       {
+                           string text = _resolver.ResolveCallstacks(
+                              o.CallStack,                                              // callStackInput.Text,
+                              o.PdbPath,                                                // pdbPaths.Text,
+                              o.PdbRecurse,                                             // pdbRecurse.Checked,
+                              new System.Collections.Generic.List<string>(o.DllPath.Split(';')),   // binaryPaths.Text,
+                              o.DllRecurse,                                             // DLLrecurse.Checked,
+                              o.SingleLine,                                             // FramesOnSingleLine.Checked,
+                              o.IncludeLineNumbers,                                     // IncludeLineNumbers.Checked,
+                              o.LookupSource                                            // RelookupSource.Checked
+                              );
 
-                                      System.Console.Write(text);
-                                  });
+                           System.Console.Write(text);
+                           return 1;
+                       },
+                        (ScriptOptions o) =>
+                        {
+                            string text = _resolver.ObtainPDBDownloadCommandsfromDLL(o.DllPath, o.DllRecurse);
+
+                            System.Console.Write(text);
+                            return 1;
+                        },
+                        errs => 1);
             }
         }
     }

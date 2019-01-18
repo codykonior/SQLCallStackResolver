@@ -76,9 +76,11 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1758, 752);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(879, 391);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 83);
+            this.button1.Size = new System.Drawing.Size(88, 43);
             this.button1.TabIndex = 0;
             this.button1.Text = "Resolve callstacks!";
             this.button1.UseVisualStyleBackColor = true;
@@ -86,18 +88,22 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 755);
+            this.label1.Location = new System.Drawing.Point(6, 393);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 25);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Path(s) to PDBs";
             // 
             // pdbPaths
             // 
-            this.pdbPaths.Location = new System.Drawing.Point(198, 752);
+            this.pdbPaths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pdbPaths.Location = new System.Drawing.Point(99, 391);
+            this.pdbPaths.Margin = new System.Windows.Forms.Padding(2);
             this.pdbPaths.Name = "pdbPaths";
-            this.pdbPaths.Size = new System.Drawing.Size(506, 31);
+            this.pdbPaths.Size = new System.Drawing.Size(255, 20);
             this.pdbPaths.TabIndex = 2;
             this.pdbPaths.Text = "C:\\Users\\arvindsh\\Desktop\\sp1_gdr_pdbs";
             // 
@@ -109,12 +115,14 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // pdbRecurse
             // 
+            this.pdbRecurse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pdbRecurse.AutoSize = true;
             this.pdbRecurse.Checked = true;
             this.pdbRecurse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pdbRecurse.Location = new System.Drawing.Point(719, 752);
+            this.pdbRecurse.Location = new System.Drawing.Point(360, 391);
+            this.pdbRecurse.Margin = new System.Windows.Forms.Padding(2);
             this.pdbRecurse.Name = "pdbRecurse";
-            this.pdbRecurse.Size = new System.Drawing.Size(217, 29);
+            this.pdbRecurse.Size = new System.Drawing.Size(111, 17);
             this.pdbRecurse.TabIndex = 4;
             this.pdbRecurse.Text = "Check sub folders";
             this.pdbRecurse.UseVisualStyleBackColor = true;
@@ -122,12 +130,16 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // callStackInput
             // 
             this.callStackInput.AllowDrop = true;
-            this.callStackInput.Location = new System.Drawing.Point(0, 2);
+            this.callStackInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.callStackInput.Location = new System.Drawing.Point(0, 1);
+            this.callStackInput.Margin = new System.Windows.Forms.Padding(2);
             this.callStackInput.MaxLength = 999999999;
             this.callStackInput.Multiline = true;
             this.callStackInput.Name = "callStackInput";
             this.callStackInput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.callStackInput.Size = new System.Drawing.Size(566, 731);
+            this.callStackInput.Size = new System.Drawing.Size(285, 382);
             this.callStackInput.TabIndex = 5;
             this.callStackInput.Text = resources.GetString("callStackInput.Text");
             this.callStackInput.WordWrap = false;
@@ -138,21 +150,27 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // finalOutput
             // 
-            this.finalOutput.Location = new System.Drawing.Point(572, 2);
+            this.finalOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.finalOutput.Location = new System.Drawing.Point(286, 1);
+            this.finalOutput.Margin = new System.Windows.Forms.Padding(2);
             this.finalOutput.MaxLength = 999999999;
             this.finalOutput.Multiline = true;
             this.finalOutput.Name = "finalOutput";
             this.finalOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.finalOutput.Size = new System.Drawing.Size(1375, 731);
+            this.finalOutput.Size = new System.Drawing.Size(690, 382);
             this.finalOutput.TabIndex = 6;
             this.finalOutput.WordWrap = false;
             this.finalOutput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1216, 741);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.Location = new System.Drawing.Point(608, 385);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 93);
+            this.button2.Size = new System.Drawing.Size(64, 48);
             this.button2.TabIndex = 3;
             this.button2.Text = "Enter base addresses";
             this.button2.UseVisualStyleBackColor = true;
@@ -160,47 +178,57 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // DLLrecurse
             // 
+            this.DLLrecurse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DLLrecurse.AutoSize = true;
             this.DLLrecurse.Checked = true;
             this.DLLrecurse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DLLrecurse.Location = new System.Drawing.Point(719, 800);
+            this.DLLrecurse.Location = new System.Drawing.Point(360, 416);
+            this.DLLrecurse.Margin = new System.Windows.Forms.Padding(2);
             this.DLLrecurse.Name = "DLLrecurse";
-            this.DLLrecurse.Size = new System.Drawing.Size(217, 29);
+            this.DLLrecurse.Size = new System.Drawing.Size(111, 17);
             this.DLLrecurse.TabIndex = 10;
             this.DLLrecurse.Text = "Check sub folders";
             this.DLLrecurse.UseVisualStyleBackColor = true;
             // 
             // binaryPaths
             // 
-            this.binaryPaths.Location = new System.Drawing.Point(198, 803);
+            this.binaryPaths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.binaryPaths.Location = new System.Drawing.Point(99, 418);
+            this.binaryPaths.Margin = new System.Windows.Forms.Padding(2);
             this.binaryPaths.Name = "binaryPaths";
-            this.binaryPaths.Size = new System.Drawing.Size(506, 31);
+            this.binaryPaths.Size = new System.Drawing.Size(255, 20);
             this.binaryPaths.TabIndex = 9;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 806);
+            this.label2.Location = new System.Drawing.Point(6, 419);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 25);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Path(s) to DLLs";
             // 
             // FramesOnSingleLine
             // 
+            this.FramesOnSingleLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FramesOnSingleLine.AutoSize = true;
-            this.FramesOnSingleLine.Location = new System.Drawing.Point(1350, 741);
+            this.FramesOnSingleLine.Location = new System.Drawing.Point(675, 385);
+            this.FramesOnSingleLine.Margin = new System.Windows.Forms.Padding(2);
             this.FramesOnSingleLine.Name = "FramesOnSingleLine";
-            this.FramesOnSingleLine.Size = new System.Drawing.Size(153, 54);
+            this.FramesOnSingleLine.Size = new System.Drawing.Size(78, 30);
             this.FramesOnSingleLine.TabIndex = 11;
             this.FramesOnSingleLine.Text = "Frames on \r\nsingle line?";
             this.FramesOnSingleLine.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1074, 741);
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.Location = new System.Drawing.Point(537, 385);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(136, 93);
+            this.button4.Size = new System.Drawing.Size(68, 48);
             this.button4.TabIndex = 13;
             this.button4.Text = "Get PDB dnld script";
             this.button4.UseVisualStyleBackColor = true;
@@ -208,9 +236,11 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(960, 741);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.Location = new System.Drawing.Point(480, 385);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 93);
+            this.button3.Size = new System.Drawing.Size(54, 48);
             this.button3.TabIndex = 14;
             this.button3.Text = "Load XEL";
             this.button3.UseVisualStyleBackColor = true;
@@ -218,32 +248,35 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             // 
             // IncludeLineNumbers
             // 
+            this.IncludeLineNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.IncludeLineNumbers.AutoSize = true;
             this.IncludeLineNumbers.Checked = true;
             this.IncludeLineNumbers.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IncludeLineNumbers.Location = new System.Drawing.Point(1350, 800);
+            this.IncludeLineNumbers.Location = new System.Drawing.Point(675, 416);
+            this.IncludeLineNumbers.Margin = new System.Windows.Forms.Padding(2);
             this.IncludeLineNumbers.Name = "IncludeLineNumbers";
-            this.IncludeLineNumbers.Size = new System.Drawing.Size(152, 29);
+            this.IncludeLineNumbers.Size = new System.Drawing.Size(79, 17);
             this.IncludeLineNumbers.TabIndex = 15;
             this.IncludeLineNumbers.Text = "LineNums?";
             this.IncludeLineNumbers.UseVisualStyleBackColor = true;
             // 
             // RelookupSource
             // 
+            this.RelookupSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RelookupSource.AutoSize = true;
-            this.RelookupSource.Location = new System.Drawing.Point(1509, 751);
+            this.RelookupSource.Location = new System.Drawing.Point(754, 391);
+            this.RelookupSource.Margin = new System.Windows.Forms.Padding(2);
             this.RelookupSource.Name = "RelookupSource";
-            this.RelookupSource.Size = new System.Drawing.Size(221, 29);
+            this.RelookupSource.Size = new System.Drawing.Size(115, 17);
             this.RelookupSource.TabIndex = 16;
             this.RelookupSource.Text = "Relookup Source?";
             this.RelookupSource.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1946, 847);
+            this.ClientSize = new System.Drawing.Size(973, 440);
             this.Controls.Add(this.RelookupSource);
             this.Controls.Add(this.IncludeLineNumbers);
             this.Controls.Add(this.button3);
@@ -259,7 +292,7 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
             this.Controls.Add(this.pdbPaths);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "SQL callstack resolver";
