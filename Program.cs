@@ -90,22 +90,27 @@ namespace Microsoft.SqlServer.Utils.Misc.SQLCallStackResolver
 
                 CommandLine.Parser.Default.ParseArguments<ParseOptions, ScriptOptions>(args)
                     .MapResult(
-                       (ParseOptions o) =>
-                       {
-                           string text = _resolver.ResolveCallstacks(
-                              o.CallStack,                                              // callStackInput.Text,
-                              o.PdbPath,                                                // pdbPaths.Text,
-                              o.PdbRecurse,                                             // pdbRecurse.Checked,
-                              new System.Collections.Generic.List<string>(o.DllPath.Split(';')),   // binaryPaths.Text,
-                              o.DllRecurse,                                             // DLLrecurse.Checked,
-                              o.SingleLine,                                             // FramesOnSingleLine.Checked,
-                              o.IncludeLineNumbers,                                     // IncludeLineNumbers.Checked,
-                              o.LookupSource                                            // RelookupSource.Checked
-                              );
+                        (ParseOptions o) =>
+                        {
+                            System.Collections.Generic.List<string> dllPath = null;
+                            if (o.DllPath != null) {
+                                dllPath = new System.Collections.Generic.List<string>(o.DllPath.Split(';'));
+                            }
 
-                           System.Console.Write(text);
-                           return 1;
-                       },
+                            string text = _resolver.ResolveCallstacks(
+                                o.CallStack,                                              // callStackInput.Text,
+                                o.PdbPath,                                                // pdbPaths.Text,
+                                o.PdbRecurse,                                             // pdbRecurse.Checked,
+                                dllPath,                                                  // binaryPaths.Text,
+                                o.DllRecurse,                                             // DLLrecurse.Checked,
+                                o.SingleLine,                                             // FramesOnSingleLine.Checked,
+                                o.IncludeLineNumbers,                                     // IncludeLineNumbers.Checked,
+                                o.LookupSource                                            // RelookupSource.Checked
+                                );
+
+                            System.Console.Write(text);
+                            return 1;
+                        },
                         (ScriptOptions o) =>
                         {
                             string text = _resolver.ObtainPDBDownloadCommandsfromDLL(o.DllPath, o.DllRecurse);
